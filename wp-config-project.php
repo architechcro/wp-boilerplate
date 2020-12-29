@@ -5,17 +5,17 @@
  * Define global environment variable, and define certain
  * settings based on it.
  *
- * @package init_theme_name
+ * @package Eightshift_Boilerplate
  *
  * @since 1.0.0
  */
 
-if ( ! defined( 'INF_ENV' ) ) {
+if ( ! defined( 'EB_ENV' ) ) {
   return false;
 }
 
 // Limit revisions for better optimizations.
-define( 'WP_POST_REVISIONS', 3 );
+define( 'WP_POST_REVISIONS', 10 );
 
 // Optimize assets in admin.
 define( 'COMPRESS_CSS', true );
@@ -36,7 +36,13 @@ define( 'AUTOMATIC_UPDATER_DISABLED', true );
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_LOG', true );
 
-if ( INF_ENV === 'develop' ) {
+// Helps preventing login fails.
+if ( ! defined( 'WP_CLI' ) ) {
+  define( 'COOKIE_DOMAIN', $_SERVER['HTTP_HOST'] );
+}
+
+// Environment based setup.
+if ( EB_ENV === 'develop' ) {
   // Enable direct upload from admin.
   define( 'FS_METHOD', 'direct' );
 

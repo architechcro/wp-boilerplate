@@ -1,17 +1,6 @@
 {
-  "extends": "@infinumjs",
-
-  "env": {
-
-    # You can change environment depending on the project you are working on
-    "browser": true,
-    "node": false,
-    "commonjs": true,
-    "es6": true,
-    "jquery": true
-  },
-
+  "extends": "./node_modules/@eightshift/frontend-libs/linters/eslint.config.js",
   "rules": {
-    "import/prefer-default-export": 0
+    "import/no-extraneous-dependencies": ["error", {"packageDir": ["./node_modules/@eightshift/frontend-libs", "./"]}]
   }
 }
